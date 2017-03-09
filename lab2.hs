@@ -71,7 +71,9 @@ isPrime n = helper 2
 
 -- Задача 5. Да се обърнат цифрите на дадено число
 reverseDigits :: Integer -> Integer
-reverseDigits n = -1
+reverseDigits n = helper n 0  
+helper  :: Integer -> Integer -> Integer 
+helper n res = if ( n < 10) then ( res * 10) + n else helper (n `div` 10) (res* 10 + ( n `mod` 10))
 
 -- Задача 6. Да се напише функция, намираща броя на срещанията на дадена цифра в записа на число
 countOccurences :: Integer -> Integer -> Integer
@@ -84,7 +86,9 @@ nonDecreasingNumber n = False
 -- Задача 8. Да се напише предикат, който връща дали едно число е съвършено, т.е. равно на сумата от делите си
 -- Пример: 6 = 1 + 2 + 3
 isPerfect :: Integer -> Bool
-isPerfect n = sumOfDivisors n == 2 * n
+
+isPerfect n = (sumOfDivisors n) - n == n 
+
 
 -- Задача 9. Да се дефинира функция, която намира сумата на всички прости делители на едно число
 sumOfPrimeDivisors :: Integer -> Integer
